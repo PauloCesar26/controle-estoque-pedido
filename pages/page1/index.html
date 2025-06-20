@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="max-w-[650px] min-w-[200px] bg-zinc-500 rounded-[15px] ml-1 mr-1 md:ml-auto md:mr-auto pt-5 pb-5 pl-3 pr-3 space-y-3 flex flex-col items-center mt-5 mb-5">
+        <h1 class="border-b-1 border-zinc-900 pb-3 w-full text-center">Estoque do dia <span id="current-date"></span></h1>
+
+        <form id="form" class="pl-3 pr-3 w-full">
+            <div class="flex flex-col">
+                <div class="border-b-2 border-zinc-100 flex flex-col space-y-5 pb-4 pt-2">
+                    <div class="flex flex-col">
+                        <span class="flex flex-col gap-1">
+                            <label for="massas">Massas:</label>
+                            <select name="" id="massas" class="w-30 bg-zinc-100 text-black pt-1 pb-1 pl-1 pr-3 rounded-[10px]">
+                                <option value="">Selecione...</option>
+                                <option value="Chocolate">Chocolate</option>
+                                <option value="Branca">Branca</option>
+                                <option value="Red Velvet">Red velvet</option>
+                                <option value="Cenoura">Cenoura</option>
+                            </select>
+                        </span>
+                        <p id="erro-massa" class="text-red-900"></p>
+                    </div>
+        
+                    <div class="flex flex-col">
+                        <span class="flex flex-col gap-1">
+                            <label for="qtd-massa">Quantidade de massa:</label>
+                            <input type="number" id="qtd-massa" placeholder="Digite a qtd para o estoque" class="bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2">
+                        </span>
+                        <p id="erro-qtd-massa" class="text-red-900"></p>
+                    </div>
+                </div>
+
+                <div class="border-b-2 border-zinc-100 flex flex-col space-y-5 pb-4 pt-3">
+                    <div class="flex flex-col">
+                        <span class="flex flex-col gap-1">
+                            <label for="recheio">Recheio:</label>
+                            <select name="" id="recheio" class="w-30 bg-zinc-100 text-black pt-1 pb-1 pl-1 pr-3 rounded-[10px]">
+                                <option value="">Selecione...</option>
+                                <option value="Chocolate">Chocolate</option>
+                                <option value="Ninho">Ninho</option>
+                                <option value="Doce de Leite">Doce de leite</option>
+                                <option value="Maracujá">Maracujá</option>
+                            </select>
+                        </span>
+                        <p id="erro-recheio" class="text-red-900"></p>
+                    </div>
+        
+                    <div class="flex flex-col">
+                        <span class="flex flex-col gap-1">
+                            <label for="qtd-recheio">Quantidade de recheio:</label>
+                            <input type="number" id="qtd-recheio" placeholder="Digite a qtd para o estoque" class="bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2">
+                        </span>
+                        <p id="erro-qtd-recheio" class="text-red-900"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col space-y-2 pt-3">
+                <button type="submit" class="pt-3 pb-3 bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white rounded-[10px] cursor-pointer transition duration-[0.3s]">
+                    Enviar
+                </button>
+                <button id="limpar" class="pt-3 pb-3 bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white rounded-[10px] cursor-pointer transition duration-[0.3s]">
+                    Limpar estoque
+                </button>
+            </div>
+        </form>
+
+        <button id="update-estoque" class="hidden w-full pt-3 pb-3 bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white rounded-[10px] cursor-pointer transition duration-[0.3s]">
+            Atualizar estoque
+        </button>
+    </div>
+
+    <div id="estoque" class="hidden m-2 flex flex-col items-center border-1 border-zinc-900">
+        <h1 class="text-center">Estoque</h1>
+        <div class="p-5 w-full bg-zinc-300" id="exibir-estoque">
+
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="hidden">
+        <div class="
+            fixed 
+            top-0 
+            left-0
+            w-full
+            h-full
+            bg-white
+            opacity-90
+            z-50
+            flex
+            items-center
+            justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle-icon lucide-loader-circle animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <div class="flex flex-col">
+            <span class="flex flex-col">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" class="bg-zinc-100 rounded-[6px] pt-1 pb-1 pl-2">
+            </span>
+            <p id="erro-name" class="text-red-900"></p>
+        </div>
+        <button type="submit">Enviar</button>
+        <button id="limpar">Limpar estoque</button>
+    </form>
+
+    <div class="">
+        <h1>Estoque:</h1>
+        <div class="" id="exibir-estoque">
+
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="hidden">
+        <div class="
+            fixed 
+            top-0 
+            left-0
+            w-full
+            h-full
+            bg-white
+            opacity-90
+            z-50
+            flex
+            items-center
+            justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader-circle-icon lucide-loader-circle animate-spin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        </div>
+    </div>
+</body>
+</html>

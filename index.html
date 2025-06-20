@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SPA</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="app.js" defer></script>
+  <style>
+    .active{
+      background-color: rgb(99, 99, 99);
+      transition: 500ms ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="w-full bg-zinc-600 p-5 flex justify-between">
+      <div class="">
+        LOGO
+      </div>
+      <div class="space-x-2 max-sm:hidden">
+        <a href="/" class="active button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Home</a>
+        <a href="/page1" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 1</a>
+        <a href="/page2" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 2</a>
+      </div>
+      
+      <div class="sm:hidden" id="menu">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </div>
+    </div>
+    <div class="button-menu w-full bg-zinc-700 p-5 sm:hidden hidden">
+      <div class="w-full flex flex-col space-y-3">
+        <a href="/" class="active button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Home</a>
+        <a href="/page1" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 1</a>
+        <a href="/page2" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 2</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="app" class="">
+
+  </main>
+
+</body>
+</html>
