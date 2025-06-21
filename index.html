@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>SPA</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="app.js" defer></script>
+  <script type="module" src="app.js" defer></script>
   <style>
     .active{
       background-color: rgb(99, 99, 99);
@@ -20,8 +20,8 @@
       </div>
       <div class="space-x-2 max-sm:hidden">
         <a href="/" class="active button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Home</a>
-        <a href="/page1" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 1</a>
-        <a href="/page2" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 2</a>
+        <a href="/estoque" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 1</a>
+        <a href="/pedido" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 2</a>
       </div>
       
       <div class="sm:hidden" id="menu">
@@ -32,13 +32,13 @@
     <div class="button-menu w-full bg-zinc-700 p-5 sm:hidden hidden">
       <div class="w-full flex flex-col space-y-3">
         <a href="/" class="active button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Home</a>
-        <a href="/page1" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 1</a>
-        <a href="/page2" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 2</a>
+        <a href="/estoque" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 1</a>
+        <a href="/pedido" class="button bg-zinc-200 pt-2 pb-2 pl-3 pr-3 rounded-[10px] cursor-pointer" data-link>Page 2</a>
       </div>
     </div>
   </nav>
 
-  <main id="app" class="">
+  <main id="app">
 
   </main>
 
