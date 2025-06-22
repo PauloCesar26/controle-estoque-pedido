@@ -42,6 +42,14 @@ const navigate = (e) => {
 };
 
 const logicPage = (path) => {
+// Estoque:
+// - Cadastrar os outros produtos e exibir
+
+// Pedido:
+// - Front end do formulario
+// - Separar as infromações do cliente e exibir
+// - Fazer com que apague o cliente que já foi atendido e produto foi entregue
+
     if(path === "/estoque"){
         estoque();
     } 
@@ -75,7 +83,7 @@ buttons.forEach((a) => {
         })
 
         a.classList.add("active");
-        buttonMenu.classList.add("hidden");
+        buttonMenu.classList.toggle("hidden");
         iconOpen.classList.toggle("hidden");
         iconClose.classList.toggle("hidden");
     });
