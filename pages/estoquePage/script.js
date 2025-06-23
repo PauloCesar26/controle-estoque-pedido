@@ -256,7 +256,6 @@ export function estoque(){
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            //Salvando as massas
             const saveMassas = document.querySelectorAll(".massa");
             const saveRecheio = document.querySelectorAll(".recheio");
             const saveBebida = document.querySelectorAll(".bebida");

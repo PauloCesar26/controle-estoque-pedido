@@ -42,18 +42,9 @@ const navigate = (e) => {
 };
 
 const logicPage = (path) => {
-// Estoque:
-// - Cadastrar os outros produtos e exibir
-
-// Pedido:
-// - Front end do formulario
-// - Separar as infromações do cliente e exibir
-// - Fazer com que apague o cliente que já foi atendido e produto foi entregue
-
     if(path === "/estoque"){
         estoque();
     } 
-    
     if(path === "/pedido"){
         pedido();
     }
