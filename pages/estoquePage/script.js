@@ -39,10 +39,10 @@ export function estoque(){
 
         const massasAdd = 
         `
-            <div id="${idMassa}" class="massa space-y-5 pb-4 mb-4 border-b-1 border-zinc-100">
+            <div id="${idMassa}" class="massa space-y-5 pb-4 mb-4 border-b-1 border-zinc-100/20">
                 <div class="flex flex-col">
                     <span class="flex flex-col gap-1">
-                        <label for="massas">Massas:</label>
+                        <label for="massas">Massa:</label>
                         <select name="" class="name-massas w-30 bg-zinc-100 text-black pt-1 pb-1 pl-1 pr-3 rounded-[10px]">
                             <option value="">Selecione...</option>
                             <option value="Chocolate">Chocolate</option>
@@ -57,12 +57,12 @@ export function estoque(){
                 <div class="flex flex-col">
                     <span class="flex flex-col gap-1">
                         <label for="qtd-massa">Quantidade:</label>
-                        <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-massa bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2">
+                        <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-massa bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
                     </span>
                     <p id="erro-qtd-massa" class="text-red-900"></p>
                 </div>
 
-                <button onClick="removeMassa(${idMassa})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
+                <button onClick="removeMassa(${idMassa})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-950 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                 </button>
             </div>
@@ -85,7 +85,7 @@ export function estoque(){
 
         const recheioAdd = 
         `
-            <div id="${idRecheio}" class="recheio space-y-5 pb-4 mb-4 border-b-1 border-zinc-100">
+            <div id="${idRecheio}" class="recheio space-y-5 pb-4 mb-4 border-b-1 border-zinc-100/20">
                 <div class="flex flex-col">
                     <span class="flex flex-col gap-1">
                         <label for="recheio">Recheio:</label>
@@ -103,12 +103,12 @@ export function estoque(){
                 <div class="flex flex-col">
                     <span class="flex flex-col gap-1">
                         <label for="qtd-recheio">Quantidade:</label>
-                        <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-recheio bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2">
+                        <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-recheio bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
                     </span>
                     <p id="erro-qtd-recheio" class="text-red-900"></p>
                 </div>
 
-                <button onClick="removeRecheio(${idRecheio})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
+                <button onClick="removeRecheio(${idRecheio})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-950 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                 </button>
             </div>
@@ -131,7 +131,7 @@ export function estoque(){
 
         const bebidaAdd = 
         `
-        <div id="${idBebida}" class="bebida space-y-5 pb-4 mb-4 border-b-1 border-zinc-100">
+        <div id="${idBebida}" class="bebida space-y-5 pb-4 mb-4 border-b-1 border-zinc-100/20">
             <div class="flex flex-col">
                 <span class="flex flex-col gap-1">
                     <label for="bebida">Bebida:</label>
@@ -149,12 +149,12 @@ export function estoque(){
             <div class="flex flex-col">
                 <span class="flex flex-col gap-1">
                     <label for="qtd-bebida">Quantidade:</label>
-                    <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-bebida bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2">
+                    <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-bebida bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
                 </span>
                 <p id="erro-qtd-bebida" class="text-red-900"></p>
             </div>
 
-            <button onClick="removeBebida(${idBebida})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-700 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
+            <button onClick="removeBebida(${idBebida})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-950 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
             </button>
         </div>
