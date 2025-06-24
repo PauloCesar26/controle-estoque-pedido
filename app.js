@@ -28,8 +28,8 @@ const render = async (path) => {
         app.innerHTML = res;
         logicPage(path);
     }
-    catch{
-        console.log("Erro ao carregar a página");
+    catch (error){
+        console.error("Erro: ", error);
         app.innerHTML = "<h1>Erro ao carregar a página</h1>";
     }
 
