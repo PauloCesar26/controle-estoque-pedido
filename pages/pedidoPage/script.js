@@ -24,22 +24,63 @@ export function pedido(){
     let infoForm = JSON.parse(localStorage.getItem("infoForm")) || [];
 
     const updateOrder = () => {
-        order.innerHTML = "";
+        showLoandingOverlay();
 
-        infoForm.forEach((item) => {
-            if(!item.name) return; 
-            if(!item.massa1) return;
+        setTimeout(() => {
+            order.innerHTML = "";
+    
+            infoForm.forEach((item, index) => {
+                if(!item.name || !item.massa1) return;
+    
+                const div = document.createElement("div");
+                div.classList.add("m-2", "pl-2", "pr-2", "pt-1", "pb-1", "border-b-1", "border-black", "flex", "items-center", "justify-between");
 
-            const div = document.createElement("div");
-            div.classList.add("m-2", "pl-2", "pr-2", "pt-1", "pb-1", "border-b-1", "border-black");
-            const pName = document.createElement("p");
-            pName.textContent = `Nome: ${item.name}`;
-            div.appendChild(pName);
-            const pMassa1 = document.createElement("p");
-            pMassa1.textContent = `Massa 1: ${item.massa1}`;
-            div.appendChild(pMassa1);
-            order.appendChild(div);
-        });
+                const span = document.createElement("span");
+
+                const pName = document.createElement("p");
+                pName.textContent = `Nome: ${item.name}`;
+                span.appendChild(pName);
+
+                const pMassa1 = document.createElement("p");
+                pMassa1.textContent = `Massa 1: ${item.massa1}`;
+                span.appendChild(pMassa1);
+
+                const buttonDelete = document.createElement("button");
+                buttonDelete.classList.add(
+                    "pt-1",
+                    "pb-1",
+                    "sm:pl-3",
+                    "sm:pr-3",
+                    "max-sm:pl-2",
+                    "max-sm:pr-2",
+                    "sm:h-10",
+                    "max-sm:h-8",
+                    "rounded-[10px]",
+                    "bg-zinc-950",
+                    "hover:bg-zinc-800",
+                    "ease-in-out",
+                    "text-white",
+                    "flex",
+                    "items-center",
+                    "cursor-pointer",
+                    "transition",
+                    "duration-[0.3s]"
+                );
+                buttonDelete.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>';
+
+                buttonDelete.addEventListener("click", () => {
+                    infoForm.splice(index, 1); 
+                    localStorage.setItem("infoForm", JSON.stringify(infoForm));
+                    updateOrder(); 
+                });
+
+                div.appendChild(span);
+                div.appendChild(buttonDelete);
+                order.appendChild(div);
+            });
+
+            loandingOverlay.classList.add("hidden");
+        }, 800)
     };
 
     if(form){
@@ -63,18 +104,26 @@ export function pedido(){
                 massa1: massa1Pedido,
             });
             localStorage.setItem("infoForm", JSON.stringify(infoForm));
+
             console.log(infoForm);
             updateOrder();
             form.reset();
         });
 
         btnClean.addEventListener("click", () => {
-            localStorage.removeItem("infoForm"); 
+            showLoandingOverlay();
 
-            infoForm = []; 
-            localStorage.removeItem("infoForm");
-            order.innerHTML = "";
+            setTimeout(() => {
+                localStorage.removeItem("infoForm"); 
+    
+                infoForm = []; 
+                localStorage.removeItem("infoForm");
+                order.innerHTML = "";
+                loandingOverlay.classList.add("hidden");
+            }, 800);
         });
     }
-    updateOrder();
+    if(localStorage.getItem("infoForm")){
+        updateOrder();
+    }
 }
