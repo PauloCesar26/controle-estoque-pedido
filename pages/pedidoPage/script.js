@@ -1,17 +1,12 @@
 export function pedido(){
-    // - Adicionar info no form
-    // - Fazer a exibição na tela
-    // -
     const form = document.getElementById("form");
     const btnClean = document.getElementById("limpar");
     const order = document.getElementById("exibir-order");
     const name = document.getElementById("name");
     const massa1 = document.querySelector(".name-massa1");
-
-    const loandingOverlay = document.getElementById("loadingOverlay");
-    function showLoandingOverlay(){
-        loandingOverlay?.classList.remove("hidden");
-    }
+    const recheio1 = document.querySelector(".name-recheio1");
+    const massa2 = document.querySelector(".name-massa2");
+    const recheio2 = document.querySelector(".name-recheio2");
 
     const currentDate = document.getElementById("current-date");
     const date = new Date(); 
@@ -21,7 +16,71 @@ export function pedido(){
     const formattedDate = `${day}/${month}/${year}`;
     currentDate.textContent = formattedDate;
 
+    const loandingOverlay = document.getElementById("loadingOverlay");
+    function showLoandingOverlay(){
+        loandingOverlay?.classList.remove("hidden");
+    }
+
     let infoForm = JSON.parse(localStorage.getItem("infoForm")) || [];
+
+    if(form){
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const nomeDigitado = name.value.trim();
+            const massa1Pedido = massa1.value;
+            const recheio1Pedido = recheio1.value;
+            const massa2Pedido = massa2.value;
+            const recheio2Pedido = recheio2.value;
+
+            if(nomeDigitado === ""){
+                alert("Por favor, preencha o nome.");
+                return;
+            }
+            if(massa1Pedido === ""){
+                alert("Por favor, escolha a massa 1.");
+                return;
+            }
+            if(recheio1Pedido === ""){
+                alert("Por favor, escolha o recheio 1.");
+                return;
+            }
+            if(massa2Pedido === ""){
+                alert("Por favor, escolha a massa 2.");
+                return;
+            }
+            if(recheio2Pedido === ""){
+                alert("Por favor, escolha o recheio 2.");
+                return;
+            }
+            
+            infoForm.push({ 
+                name: nomeDigitado,
+                massa1: massa1Pedido,
+                recheio1: recheio1Pedido,
+                massa2: massa2Pedido,
+                recheio2: recheio2Pedido
+            });
+            localStorage.setItem("infoForm", JSON.stringify(infoForm));
+            console.log(infoForm);
+            updateOrder();
+            form.reset();
+        });
+
+        btnClean.addEventListener("click", () => {
+            showLoandingOverlay();
+
+            setTimeout(() => {
+                localStorage.removeItem("infoForm"); 
+    
+                infoForm = []; 
+                localStorage.removeItem("infoForm");
+                order.innerHTML = "";
+                divOrder.classList.add("hidden");
+                loandingOverlay.classList.add("hidden");
+            }, 800);
+        });
+    }
 
     const updateOrder = () => {
         showLoandingOverlay();
@@ -44,6 +103,18 @@ export function pedido(){
                 const pMassa1 = document.createElement("p");
                 pMassa1.textContent = `Massa 1: ${item.massa1}`;
                 span.appendChild(pMassa1);
+                
+                const pRecheio1 = document.createElement("p");
+                pRecheio1.textContent = `Recheio 1: ${item.recheio1}`;
+                span.appendChild(pRecheio1);
+                
+                const pMassa2 = document.createElement("p");
+                pMassa2.textContent = `Massa 1: ${item.massa2}`;
+                span.appendChild(pMassa2);
+                
+                const pRecheio2 = document.createElement("p");
+                pRecheio2.textContent = `Recheio 2: ${item.recheio2}`;
+                span.appendChild(pRecheio2);
 
                 const buttonDelete = document.createElement("button");
                 buttonDelete.classList.add(
@@ -71,6 +142,7 @@ export function pedido(){
                 buttonDelete.addEventListener("click", () => {
                     infoForm.splice(index, 1); 
                     localStorage.setItem("infoForm", JSON.stringify(infoForm));
+                    console.log(infoForm);
                     updateOrder(); 
                 });
 
@@ -83,47 +155,7 @@ export function pedido(){
         }, 800)
     };
 
-    if(form){
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const nomeDigitado = name.value.trim();
-            const massa1Pedido = massa1.value;
-
-            if(nomeDigitado === ""){
-                alert("Por favor, preencha o nome.");
-                return;
-            }
-            if(massa1Pedido === ""){
-                alert("Por favor, escolha a massa 1.");
-                return;
-            }
-            
-            infoForm.push({ 
-                name: nomeDigitado,
-                massa1: massa1Pedido,
-            });
-            localStorage.setItem("infoForm", JSON.stringify(infoForm));
-
-            console.log(infoForm);
-            updateOrder();
-            form.reset();
-        });
-
-        btnClean.addEventListener("click", () => {
-            showLoandingOverlay();
-
-            setTimeout(() => {
-                localStorage.removeItem("infoForm"); 
-    
-                infoForm = []; 
-                localStorage.removeItem("infoForm");
-                order.innerHTML = "";
-                loandingOverlay.classList.add("hidden");
-            }, 800);
-        });
-    }
-    if(localStorage.getItem("infoForm")){
+    if(infoForm.lenght >= 0){
         updateOrder();
     }
 }
