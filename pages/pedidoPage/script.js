@@ -1,3 +1,5 @@
+import { currentEstoque } from "../estoquePage/current-estoque.js";
+
 export function pedido(){
     const form = document.getElementById("form");
     const btnClean = document.getElementById("limpar");
@@ -64,6 +66,7 @@ export function pedido(){
             localStorage.setItem("infoForm", JSON.stringify(infoForm));
             console.log(infoForm);
             updateOrder();
+            currentEstoque();
             form.reset();
         });
 
@@ -76,7 +79,6 @@ export function pedido(){
                 infoForm = []; 
                 localStorage.removeItem("infoForm");
                 order.innerHTML = "";
-                divOrder.classList.add("hidden");
                 loandingOverlay.classList.add("hidden");
             }, 800);
         });
@@ -155,7 +157,6 @@ export function pedido(){
         }, 800)
     };
 
-    if(infoForm.lenght >= 0){
-        updateOrder();
-    }
+    updateOrder();
+    
 }
