@@ -1,4 +1,4 @@
-import { currentEstoque } from "../estoquePage/current-estoque.js";
+import { updateUI } from "../estoquePage/updateUI.js";
 
 export function pedido(){
     const form = document.getElementById("form");
@@ -66,7 +66,7 @@ export function pedido(){
             localStorage.setItem("infoForm", JSON.stringify(infoForm));
             console.log(infoForm);
             updateOrder();
-            currentEstoque();
+            updateUI();
             form.reset();
         });
 

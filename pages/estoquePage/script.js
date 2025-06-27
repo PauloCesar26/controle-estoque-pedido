@@ -1,3 +1,6 @@
+import { updateUI } from "./updateUI.js";
+import { loadCurrentEstoque } from "./loadCurrentEstoque.js";
+
 export function estoque(){
     const form = document.getElementById("form");
     const btnLimpar = document.getElementById("limpar");
@@ -246,55 +249,12 @@ export function estoque(){
             updateUI();
             form.reset();
         });
-
     }
-
-    const updateUI = () => {
-        const massaEstoque = JSON.parse(localStorage.getItem("massas"));
-        const recheioEstoque = JSON.parse(localStorage.getItem("recheio"));
-        const bebidaEstoque = JSON.parse(localStorage.getItem("bebida"));
-
-        if(!displayMassa || !displayRecheio || !displayBebida || !form || !btnUpdateEstoque || !loandingOverlay) return;
-
-        showLoandingOverlay();
-
-        setTimeout(() => {
-            if(massaEstoque && massaEstoque.length > 0){
-                massaEstoque.forEach((massa, index) => {
-                    displayMassa.innerHTML += 
-                    `
-                        <p class="border-b-1 pl-2">${massa.massa || ""}</p>
-                        <p class="border-b-1">${massa.quantidade || ""}</p>
-                    `;
-                });
-            }
-            if(recheioEstoque && recheioEstoque.length > 0){
-                recheioEstoque.forEach((recheio, index) => {
-                    displayRecheio.innerHTML += 
-                    `
-                        <p class="border-b-1 pl-2">${recheio.recheio || ""}</p>
-                        <p class="border-b-1">${recheio.quantidade || ""}</p>
-                    `;
-                });
-            }
-            if(bebidaEstoque && bebidaEstoque.length > 0){
-                bebidaEstoque.forEach((bebida, index) => {
-                    displayBebida.innerHTML += 
-                    `
-                        <p class="border-b-1 pl-2">${bebida.bebida || ""}</p>
-                        <p class="border-b-1">${bebida.quantidade || ""}</p>
-                    `;
-                });
-            }
-
-            form.classList.add("hidden");
-            btnUpdateEstoque.classList.remove("hidden");
-            estoque.classList.remove("hidden");
-            loandingOverlay.classList.add("hidden");
-        }, 800);
-    };
 
     if(localStorage.getItem("massas") && localStorage.getItem("recheio") && localStorage.getItem("bebida")){
         updateUI();
+    }
+    if(localStorage.getItem("estoqueAtualMassas") && localStorage.getItem("estoqueAtualRecheios") && localStorage.getItem("estoqueAtualBebidas")){
+        loadCurrentEstoque();
     }
 };
