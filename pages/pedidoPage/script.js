@@ -19,9 +19,7 @@ export function pedido(){
     currentDate.textContent = formattedDate;
 
     const loandingOverlay = document.getElementById("loadingOverlay");
-    function showLoandingOverlay(){
-        loandingOverlay?.classList.remove("hidden");
-    }
+    const showLoandingOverlay = () => loandingOverlay?.classList.remove("hidden");
 
     let infoForm = JSON.parse(localStorage.getItem("infoForm")) || [];
 

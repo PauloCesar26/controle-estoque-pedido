@@ -14,9 +14,7 @@ export function estoque(){
     const displayBebida = document.getElementById("exibir-bebida");
 
     const loandingOverlay = document.getElementById("loadingOverlay");
-    function showLoandingOverlay(){
-        loandingOverlay?.classList.remove("hidden");
-    }
+    const showLoandingOverlay = () => loandingOverlay?.classList.remove("hidden");
 
     const date = new Date(); 
     const day = date.getDate();

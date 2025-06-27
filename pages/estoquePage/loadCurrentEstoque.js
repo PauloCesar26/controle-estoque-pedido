@@ -1,5 +1,5 @@
 export function loadCurrentEstoque(){
-     const displayCurrentMassa = document.getElementById("display-current-massa");
+    const displayCurrentMassa = document.getElementById("display-current-massa");
     const displayCurrentRecheio = document.getElementById("display-current-recheio");
     const displayCurrentBebida = document.getElementById("display-current-bebida");
 
@@ -27,4 +27,4 @@ export function loadCurrentEstoque(){
         `<p class="border-b-1 pl-2">${bebida.bebida}</p>
          <p class="border-b-1">${bebida.quantidade}</p>`;
     });
-}
+};
