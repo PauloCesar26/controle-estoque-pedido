@@ -3,10 +3,8 @@ export function updateUI(){
     const displayRecheio = document.getElementById("exibir-recheio");
     const displayBebida = document.getElementById("exibir-bebida");
 
-    const displayCurrentEstoque = document.getElementById("current-estoque");
     const displayCurrentMassa = document.getElementById("display-current-massa");
     const displayCurrentRecheio = document.getElementById("display-current-recheio");
-    const displayCurrentBebida = document.getElementById("display-current-bebida");
 
     const form = document.getElementById("form");
     const btnUpdateEstoque = document.getElementById("update-estoque");
@@ -16,7 +14,7 @@ export function updateUI(){
     const massaEstoque = JSON.parse(localStorage.getItem("massas")) || [];
     const recheioEstoque = JSON.parse(localStorage.getItem("recheio")) || [];
     const bebidaEstoque = JSON.parse(localStorage.getItem("bebida")) || [];
-    const pedidos = JSON.parse(localStorage.getItem("infoForm")) || [];
+    const orders = JSON.parse(localStorage.getItem("infoForm")) || [];
     
     if(!displayMassa || !displayRecheio || !displayBebida || !form || !btnUpdateEstoque || !loandingOverlay) return;
 
@@ -29,7 +27,7 @@ export function updateUI(){
             massaEstoque.forEach(massa => {
                 displayMassa.innerHTML += 
                 `
-                    <p class="border-b-1 pl-2">${massa.massa || ""}</p>
+                    <p class="border-b-1 pl-2">${massa.massa || "Nenhuma massa no estoque."}</p>
                     <p class="border-b-1">${massa.quantidade || ""}</p>
                 `;
             });
@@ -38,7 +36,7 @@ export function updateUI(){
             recheioEstoque.forEach(recheio => {
                 displayRecheio.innerHTML += 
                 `
-                    <p class="border-b-1 pl-2">${recheio.recheio || ""}</p>
+                    <p class="border-b-1 pl-2">${recheio.recheio || "Nenhuma recheio no estoque."}</p>
                     <p class="border-b-1">${recheio.quantidade || ""}</p>
                 `;
             });
@@ -47,52 +45,59 @@ export function updateUI(){
             bebidaEstoque.forEach(bebida => {
                 displayBebida.innerHTML += 
                 `
-                    <p class="border-b-1 pl-2">${bebida.bebida || ""}</p>
+                    <p class="border-b-1 pl-2">${bebida.bebida || "Nenhuma bebida no estoque."}</p>
                     <p class="border-b-1">${bebida.quantidade || ""}</p>
                 `;
             });
         }
 
-        const allMassasPedidos = pedidos.flatMap(p => [p.massa1, p.massa2]);
-        const contagemMassas = {};
-        allMassasPedidos.forEach(nome => {
-            contagemMassas[nome] = (contagemMassas[nome] || 0) + 1;
-        });
+        const allMassasOrder = orders.flatMap(p => [p.massa1, p.massa2]);
+        const countMassas = {};
 
+        allMassasOrder.forEach(nome => {
+            countMassas[nome] = (countMassas[nome] || 0) + 1;
+        });
         massaEstoque.forEach(massa => {
-            const qtdPedidos = contagemMassas[massa.massa] || 0;
+            const qtdPedidos = countMassas[massa.massa] || 0;
             const qtdAtual = Math.max(parseInt(massa.quantidade) - qtdPedidos, 0);
+
             displayCurrentMassa.innerHTML += 
-            `<p class="border-b-1 pl-2">${massa.massa}</p>
-            <p class="border-b-1">${qtdAtual}</p>`;
+            `
+                <p class="border-b-1 pl-2">${massa.massa || "Nenhuma massa no estoque."}</p>
+                <p class="border-b-1">${qtdAtual || ""}</p>
+            `;
         });
 
-        const allRecheiosPedidos = pedidos.flatMap(p => [p.recheio1, p.recheio2]);
-        const contagemRecheios = {};
-        allRecheiosPedidos.forEach(nome => {
-            contagemRecheios[nome] = (contagemRecheios[nome] || 0) + 1;
+        const allRecheiosOrders = orders.flatMap(p => [p.recheio1, p.recheio2]);
+        const countRecheios = {};
+
+        allRecheiosOrders.forEach(nome => {
+            countRecheios[nome] = (countRecheios[nome] || 0) + 1;
         });
         recheioEstoque.forEach(recheio => {
-            const qtdPedidos = contagemRecheios[recheio.recheio] || 0;
+            const qtdPedidos = countRecheios[recheio.recheio] || 0;
             const qtdAtual = Math.max(parseInt(recheio.quantidade) - qtdPedidos, 0);
+
             displayCurrentRecheio.innerHTML += 
-            `<p class="border-b-1 pl-2">${recheio.recheio}</p>
-             <p class="border-b-1">${qtdAtual}</p>`;
+            `
+                <p class="border-b-1 pl-2">${recheio.recheio || "Nenhuma recheio no estoque."}</p>
+                <p class="border-b-1">${qtdAtual || ""}</p>
+            `;
         });
 
-        const estoqueAtualMassas = massaEstoque.map(massa => {
-            const qtdPedidos = contagemMassas[massa.massa] || 0;
+        const currentEstoqueMassas = massaEstoque.map(massa => {
+            const qtdPedidos = countMassas[massa.massa] || 0;
             const qtdAtual = Math.max(parseInt(massa.quantidade) - qtdPedidos, 0);
             return { massa: massa.massa, quantidade: qtdAtual };
         });
-        localStorage.setItem("estoqueAtualMassas", JSON.stringify(estoqueAtualMassas));
+        localStorage.setItem("currentEstoqueMassas", JSON.stringify(currentEstoqueMassas));
 
-        const estoqueAtualRecheios = recheioEstoque.map(recheio => {
-            const qtdPedidos = contagemRecheios[recheio.recheio] || 0;
+        const currentEstoqueRecheios = recheioEstoque.map(recheio => {
+            const qtdPedidos = countRecheios[recheio.recheio] || 0;
             const qtdAtual = Math.max(parseInt(recheio.quantidade) - qtdPedidos, 0);
             return { recheio: recheio.recheio, quantidade: qtdAtual };
         });
-        localStorage.setItem("estoqueAtualRecheios", JSON.stringify(estoqueAtualRecheios));
+        localStorage.setItem("currentEstoqueRecheios", JSON.stringify(currentEstoqueRecheios));
 
         form.classList.add("hidden");
         btnUpdateEstoque.classList.remove("hidden");

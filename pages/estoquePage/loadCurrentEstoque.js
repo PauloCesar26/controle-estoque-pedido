@@ -1,30 +1,25 @@
 export function loadCurrentEstoque(){
     const displayCurrentMassa = document.getElementById("display-current-massa");
     const displayCurrentRecheio = document.getElementById("display-current-recheio");
-    const displayCurrentBebida = document.getElementById("display-current-bebida");
 
-    const estoqueAtualMassas = JSON.parse(localStorage.getItem("estoqueAtualMassas")) || [];
-    const estoqueAtualRecheios = JSON.parse(localStorage.getItem("estoqueAtualRecheios")) || [];
-    const estoqueAtualBebidas = JSON.parse(localStorage.getItem("estoqueAtualBebidas")) || [];
+    const currentEstoqueMassas = JSON.parse(localStorage.getItem("currentEstoqueMassas")) || [];
+    const currentEstoqueRecheios = JSON.parse(localStorage.getItem("currentEstoqueRecheios")) || [];
 
     displayCurrentMassa.innerHTML = "";
-    estoqueAtualMassas.forEach(massa => {
+    currentEstoqueMassas.forEach(massa => {
         displayCurrentMassa.innerHTML += 
-        `<p class="border-b-1 pl-2">${massa.massa}</p>
-         <p class="border-b-1">${massa.quantidade}</p>`;
+        `
+            <p class="border-b-1 pl-2">${massa.massa || "Nenhuma massa no estoque."}</p>
+            <p class="border-b-1">${massa.quantidade || ""}</p>
+        `;
     });
 
     displayCurrentRecheio.innerHTML = "";
-    estoqueAtualRecheios.forEach(recheio => {
+    currentEstoqueRecheios.forEach(recheio => {
         displayCurrentRecheio.innerHTML += 
-        `<p class="border-b-1 pl-2">${recheio.recheio}</p>
-         <p class="border-b-1">${recheio.quantidade}</p>`;
-    });
-
-    displayCurrentBebida.innerHTML = "";
-    estoqueAtualBebidas.forEach(bebida => {
-        displayCurrentBebida.innerHTML += 
-        `<p class="border-b-1 pl-2">${bebida.bebida}</p>
-         <p class="border-b-1">${bebida.quantidade}</p>`;
+        `
+            <p class="border-b-1 pl-2">${recheio.recheio || "Nenhuma recheio no estoque."}</p>
+            <p class="border-b-1">${recheio.quantidade || ""}</p>
+        `;
     });
 };

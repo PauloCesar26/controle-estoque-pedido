@@ -21,6 +21,22 @@ export function pedido(){
     const loandingOverlay = document.getElementById("loadingOverlay");
     const showLoandingOverlay = () => loandingOverlay?.classList.remove("hidden");
 
+    const closeModal = document.querySelector("#close-modal");
+    const modal = document.querySelector("#modal");
+    const fade = document.querySelector("#fade");
+    const modalMessage = document.querySelector("#modal-message");
+
+    const toggleModal = () => {
+        [modal, fade].forEach((el) => el.classList.toggle("hide"));
+    };
+    const showModal = (message) => {
+        modalMessage.textContent = message;
+        toggleModal();
+    };
+    closeModal.addEventListener("click", () => {
+        toggleModal();
+    });
+
     let infoForm = JSON.parse(localStorage.getItem("infoForm")) || [];
 
     if(form){
@@ -34,23 +50,23 @@ export function pedido(){
             const recheio2Pedido = recheio2.value;
 
             if(nomeDigitado === ""){
-                alert("Por favor, preencha o nome.");
+                showModal("Preencha o nome do cliente.");
                 return;
             }
             if(massa1Pedido === ""){
-                alert("Por favor, escolha a massa 1.");
+                showModal("Escolha a massa 1.");
                 return;
             }
             if(recheio1Pedido === ""){
-                alert("Por favor, escolha o recheio 1.");
+                showModal("Escolha o recheio 1.");
                 return;
             }
             if(massa2Pedido === ""){
-                alert("Por favor, escolha a massa 2.");
+                showModal("Escolha a massa 2.")
                 return;
             }
             if(recheio2Pedido === ""){
-                alert("Por favor, escolha o recheio 2.");
+                showModal("Escolha o recheio 2.")
                 return;
             }
             
@@ -154,7 +170,5 @@ export function pedido(){
             loandingOverlay.classList.add("hidden");
         }, 800)
     };
-
     updateOrder();
-    
 }

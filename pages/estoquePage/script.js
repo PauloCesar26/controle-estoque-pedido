@@ -5,6 +5,7 @@ export function estoque(){
     const form = document.getElementById("form");
     const btnLimpar = document.getElementById("limpar");
     const btnUpdateEstoque = document.getElementById("update-estoque");
+    const btnVoltarEstoque = document.getElementById("voltar");
 
     const currentDate = document.getElementById("current-date");
 
@@ -206,6 +207,10 @@ export function estoque(){
             btnUpdateEstoque.classList.add("hidden");
             loandingOverlay.classList.add("hidden");
         }, 900);
+    });
+
+    btnVoltarEstoque.addEventListener("click", () => {
+        form.classList.add("hidden");
     });
 
     if(form){
