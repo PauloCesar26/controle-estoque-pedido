@@ -75,7 +75,8 @@ export function pedido(){
                 massa1: massa1Pedido,
                 recheio1: recheio1Pedido,
                 massa2: massa2Pedido,
-                recheio2: recheio2Pedido
+                recheio2: recheio2Pedido,
+                status: false,
             });
             localStorage.setItem("infoForm", JSON.stringify(infoForm));
             console.log(infoForm);
@@ -108,7 +109,14 @@ export function pedido(){
                 if(!item.name || !item.massa1) return;
     
                 const div = document.createElement("div");
-                div.classList.add("m-2", "pl-2", "pr-2", "pt-1", "pb-1", "border-b-1", "border-black", "flex", "items-center", "justify-between");
+                div.classList.add("m-2", "pl-2", "pr-2", "pt-1", "pb-1", "border-b-1", "border-zinc-400", "flex", "flex-col", "rounded-[10px]");
+
+                if(item.status === true){
+                    div.classList.add("done");
+                }
+
+                const divButton = document.createElement("div");
+                divButton.classList.add("w-full", "flex", "items-end", "justify-end", "gap-3", "mb-3");
 
                 const span = document.createElement("span");
 
@@ -131,6 +139,36 @@ export function pedido(){
                 const pRecheio2 = document.createElement("p");
                 pRecheio2.textContent = `Recheio 2: ${item.recheio2}`;
                 span.appendChild(pRecheio2);
+
+                const buttonCheck = document.createElement("button");
+                buttonCheck.classList.add(
+                    "pt-1",
+                    "pb-1",
+                    "sm:pl-3",
+                    "sm:pr-3",
+                    "max-sm:pl-2",
+                    "max-sm:pr-2",
+                    "sm:h-10",
+                    "max-sm:h-8",
+                    "rounded-[10px]",
+                    "bg-zinc-950",
+                    "hover:bg-zinc-800",
+                    "ease-in-out",
+                    "text-white",
+                    "flex",
+                    "items-center",
+                    "cursor-pointer",
+                    "transition",
+                    "duration-[0.3s]"
+                );
+                buttonCheck.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>';
+
+                buttonCheck.addEventListener("click", () => {
+                    const isDone = div.classList.toggle("done");
+
+                    infoForm[index].status = isDone ? true : false;
+                    localStorage.setItem("infoForm", JSON.stringify(infoForm));
+                });
 
                 const buttonDelete = document.createElement("button");
                 buttonDelete.classList.add(
@@ -163,7 +201,9 @@ export function pedido(){
                 });
 
                 div.appendChild(span);
-                div.appendChild(buttonDelete);
+                divButton.appendChild(buttonCheck);
+                divButton.appendChild(buttonDelete);
+                div.appendChild(divButton);
                 order.appendChild(div);
             });
 
