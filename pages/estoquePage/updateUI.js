@@ -19,7 +19,6 @@ export function updateUI(){
     if(!displayMassa || !displayRecheio || !displayBebida || !form || !btnUpdateEstoque || !loandingOverlay) return;
 
     const showLoandingOverlay = () => loandingOverlay?.classList.remove("hidden");
-    
     showLoandingOverlay();
 
     setTimeout(() => {
@@ -64,7 +63,7 @@ export function updateUI(){
             displayCurrentMassa.innerHTML += 
             `
                 <p class="border-b-1 pl-2">${massa.massa || "Nenhuma massa no estoque."}</p>
-                <p class="border-b-1">${qtdAtual || ""}</p>
+                <p class="border-b-1">${qtdAtual}</p>
             `;
         });
 
@@ -81,7 +80,7 @@ export function updateUI(){
             displayCurrentRecheio.innerHTML += 
             `
                 <p class="border-b-1 pl-2">${recheio.recheio || "Nenhuma recheio no estoque."}</p>
-                <p class="border-b-1">${qtdAtual || ""}</p>
+                <p class="border-b-1">${qtdAtual}</p>
             `;
         });
 

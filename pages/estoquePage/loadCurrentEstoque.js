@@ -10,7 +10,7 @@ export function loadCurrentEstoque(){
         displayCurrentMassa.innerHTML += 
         `
             <p class="border-b-1 pl-2">${massa.massa || "Nenhuma massa no estoque."}</p>
-            <p class="border-b-1">${massa.quantidade || ""}</p>
+            <p class="border-b-1">${massa.quantidade || "0"}</p>
         `;
     });
 
@@ -19,7 +19,7 @@ export function loadCurrentEstoque(){
         displayCurrentRecheio.innerHTML += 
         `
             <p class="border-b-1 pl-2">${recheio.recheio || "Nenhuma recheio no estoque."}</p>
-            <p class="border-b-1">${recheio.quantidade || ""}</p>
+            <p class="border-b-1">${recheio.quantidade || "0"}</p>
         `;
     });
-};
+}

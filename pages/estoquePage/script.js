@@ -3,9 +3,9 @@ import { loadCurrentEstoque } from "./loadCurrentEstoque.js";
 
 export function estoque(){
     const form = document.getElementById("form");
-    const btnLimpar = document.getElementById("limpar");
+    const btnClean = document.getElementById("limpar");
     const btnUpdateEstoque = document.getElementById("update-estoque");
-    const btnVoltarEstoque = document.getElementById("voltar");
+    const btnReturnEstoque = document.getElementById("voltar");
 
     const currentDate = document.getElementById("current-date");
 
@@ -59,12 +59,33 @@ export function estoque(){
                 <div class="flex flex-col">
                     <span class="flex flex-col gap-1">
                         <label for="qtd-massa">Quantidade:</label>
-                        <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-massa bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
+                        <input type="number" 
+                            placeholder="Digite a qtd para o estoque" 
+                            class="qtd-massa bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
                     </span>
                     <p id="erro-qtd-massa" class="text-red-900"></p>
                 </div>
 
-                <button onClick="removeMassa(${idMassa})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-950 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
+                <button 
+                    onClick="removeMassa(${idMassa})"  
+                    type="button" 
+                    class="
+                        pt-2 
+                        pb-2 
+                        pl-3 
+                        pr-3 
+                        rounded-[10px] 
+                        bg-zinc-950 
+                        hover:bg-zinc-800 
+                        ease-in-out 
+                        text-white 
+                        mr-5 
+                        flex 
+                        items-center 
+                        gap-2 
+                        cursor-pointer 
+                        transition 
+                        duration-[0.3s]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                 </button>
             </div>
@@ -105,12 +126,33 @@ export function estoque(){
                 <div class="flex flex-col">
                     <span class="flex flex-col gap-1">
                         <label for="qtd-recheio">Quantidade:</label>
-                        <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-recheio bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
+                        <input type="number" 
+                            placeholder="Digite a qtd para o estoque" 
+                            class="qtd-recheio bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
                     </span>
                     <p id="erro-qtd-recheio" class="text-red-900"></p>
                 </div>
 
-                <button onClick="removeRecheio(${idRecheio})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-950 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
+                <button 
+                    onClick="removeRecheio(${idRecheio})"  
+                    type="button" 
+                    class="
+                        pt-2 
+                        pb-2 
+                        pl-3 
+                        pr-3 
+                        rounded-[10px] 
+                        bg-zinc-950 
+                        hover:bg-zinc-800 
+                        ease-in-out 
+                        text-white 
+                        mr-5 
+                        flex 
+                        items-center 
+                        gap-2 
+                        cursor-pointer 
+                        transition 
+                        duration-[0.3s]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                 </button>
             </div>
@@ -151,12 +193,33 @@ export function estoque(){
             <div class="flex flex-col">
                 <span class="flex flex-col gap-1">
                     <label for="qtd-bebida">Quantidade:</label>
-                    <input type="number" placeholder="Digite a qtd para o estoque" class="qtd-bebida bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
+                    <input type="number" 
+                        placeholder="Digite a qtd para o estoque" 
+                        class="qtd-bebida bg-zinc-100 rounded-[10px] pt-2 pb-2 pl-2 text-black">
                 </span>
                 <p id="erro-qtd-bebida" class="text-red-900"></p>
             </div>
 
-            <button onClick="removeBebida(${idBebida})"  type="button" class="pt-2 pb-2 pl-3 pr-3 rounded-[10px] bg-zinc-950 hover:bg-zinc-800 ease-in-out text-white mr-5 flex items-center gap-2 cursor-pointer transition duration-[0.3s]">
+            <button 
+                onClick="removeBebida(${idBebida})"  
+                type="button" 
+                class="
+                    pt-2 
+                    pb-2 
+                    pl-3 
+                    pr-3 
+                    rounded-[10px] 
+                    bg-zinc-950 
+                    hover:bg-zinc-800 
+                    ease-in-out 
+                    text-white 
+                    mr-5 
+                    flex 
+                    items-center 
+                    gap-2 
+                    cursor-pointer 
+                    transition 
+                    duration-[0.3s]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
             </button>
         </div>
@@ -190,7 +253,7 @@ export function estoque(){
         });
     }
 
-    btnLimpar.addEventListener("click", () => {
+    btnClean.addEventListener("click", () => {
         showLoandingOverlay();
 
         setTimeout(() => {
@@ -209,7 +272,7 @@ export function estoque(){
         }, 900);
     });
 
-    btnVoltarEstoque.addEventListener("click", () => {
+    btnReturnEstoque.addEventListener("click", () => {
         form.classList.add("hidden");
     });
 
@@ -260,4 +323,4 @@ export function estoque(){
     if(localStorage.getItem("estoqueAtualMassas") && localStorage.getItem("estoqueAtualRecheios") && localStorage.getItem("estoqueAtualBebidas")){
         loadCurrentEstoque();
     }
-};
+}
